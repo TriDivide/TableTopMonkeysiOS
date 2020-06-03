@@ -13,9 +13,13 @@
 		A88B131F248799440003A4CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88B131E248799440003A4CF /* Assets.xcassets */; };
 		A88B1322248799440003A4CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88B1321248799440003A4CF /* Preview Assets.xcassets */; };
 		A88B1325248799440003A4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A88B1323248799440003A4CF /* LaunchScreen.storyboard */; };
+		A8B1F50524884F1A00C56D21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8B1F50424884F1A00C56D21 /* GoogleService-Info.plist */; };
+		DC20E8DEE3A12F3DB70F74F4 /* Pods_TTMonkeys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A835144763F16A19605DBEF2 /* Pods_TTMonkeys.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		351B63C65980E7A0059EDA27 /* Pods-TTMonkeys.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTMonkeys.debug.xcconfig"; path = "Target Support Files/Pods-TTMonkeys/Pods-TTMonkeys.debug.xcconfig"; sourceTree = "<group>"; };
+		A835144763F16A19605DBEF2 /* Pods_TTMonkeys.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTMonkeys.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88B1315248799420003A4CF /* TTMonkeys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTMonkeys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88B1318248799420003A4CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A88B131A248799420003A4CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		A88B1321248799440003A4CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A88B1324248799440003A4CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A88B1326248799440003A4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8B1F50424884F1A00C56D21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BA3B7D3AB4F4ABA14B9C663E /* Pods-TTMonkeys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTMonkeys.release.xcconfig"; path = "Target Support Files/Pods-TTMonkeys/Pods-TTMonkeys.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC20E8DEE3A12F3DB70F74F4 /* Pods_TTMonkeys.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				A88B1317248799420003A4CF /* TTMonkeys */,
 				A88B1316248799420003A4CF /* Products */,
+				DA64A0F52FA509DD6B074510 /* Pods */,
+				F255E4D4A046F0AF40277392 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +65,7 @@
 		A88B1317248799420003A4CF /* TTMonkeys */ = {
 			isa = PBXGroup;
 			children = (
+				A8B1F50424884F1A00C56D21 /* GoogleService-Info.plist */,
 				A88B1318248799420003A4CF /* AppDelegate.swift */,
 				A88B131A248799420003A4CF /* SceneDelegate.swift */,
 				A88B131C248799420003A4CF /* ContentView.swift */,
@@ -75,6 +85,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DA64A0F52FA509DD6B074510 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				351B63C65980E7A0059EDA27 /* Pods-TTMonkeys.debug.xcconfig */,
+				BA3B7D3AB4F4ABA14B9C663E /* Pods-TTMonkeys.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F255E4D4A046F0AF40277392 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A835144763F16A19605DBEF2 /* Pods_TTMonkeys.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A88B1329248799440003A4CF /* Build configuration list for PBXNativeTarget "TTMonkeys" */;
 			buildPhases = (
+				2C267CEAC9E0AEEED1B8B89C /* [CP] Check Pods Manifest.lock */,
 				A88B1311248799410003A4CF /* Sources */,
 				A88B1312248799410003A4CF /* Frameworks */,
 				A88B1313248799410003A4CF /* Resources */,
+				8FF53165C7034B7BAEB7FCEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,12 +164,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				A88B1325248799440003A4CF /* LaunchScreen.storyboard in Resources */,
+				A8B1F50524884F1A00C56D21 /* GoogleService-Info.plist in Resources */,
 				A88B1322248799440003A4CF /* Preview Assets.xcassets in Resources */,
 				A88B131F248799440003A4CF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C267CEAC9E0AEEED1B8B89C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TTMonkeys-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FF53165C7034B7BAEB7FCEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTMonkeys/Pods-TTMonkeys-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTMonkeys/Pods-TTMonkeys-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTMonkeys/Pods-TTMonkeys-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A88B1311248799410003A4CF /* Sources */ = {
@@ -282,41 +355,49 @@
 		};
 		A88B132A248799440003A4CF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 351B63C65980E7A0059EDA27 /* Pods-TTMonkeys.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 000001;
 				DEVELOPMENT_ASSET_PATHS = "\"TTMonkeys/Preview Content\"";
 				DEVELOPMENT_TEAM = 3MG7YQ4U8V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TTMonkeys/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 00.00;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tridivide.TTMonkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		A88B132B248799440003A4CF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA3B7D3AB4F4ABA14B9C663E /* Pods-TTMonkeys.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 000001;
 				DEVELOPMENT_ASSET_PATHS = "\"TTMonkeys/Preview Content\"";
 				DEVELOPMENT_TEAM = 3MG7YQ4U8V;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TTMonkeys/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 00.00;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tridivide.TTMonkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
