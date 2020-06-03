@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		A88B1322248799440003A4CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88B1321248799440003A4CF /* Preview Assets.xcassets */; };
 		A88B1325248799440003A4CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A88B1323248799440003A4CF /* LaunchScreen.storyboard */; };
 		A8B1F50524884F1A00C56D21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8B1F50424884F1A00C56D21 /* GoogleService-Info.plist */; };
+		A8B1F50B2488568700C56D21 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1F50A2488568700C56D21 /* User.swift */; };
+		A8B1F50D2488574000C56D21 /* DataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1F50C2488574000C56D21 /* DataTypes.swift */; };
+		A8B1F50F24885BA900C56D21 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1F50E24885BA900C56D21 /* UserModel.swift */; };
 		DC20E8DEE3A12F3DB70F74F4 /* Pods_TTMonkeys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A835144763F16A19605DBEF2 /* Pods_TTMonkeys.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		A88B1324248799440003A4CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A88B1326248799440003A4CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8B1F50424884F1A00C56D21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A8B1F50A2488568700C56D21 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A8B1F50C2488574000C56D21 /* DataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypes.swift; sourceTree = "<group>"; };
+		A8B1F50E24885BA900C56D21 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BA3B7D3AB4F4ABA14B9C663E /* Pods-TTMonkeys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTMonkeys.release.xcconfig"; path = "Target Support Files/Pods-TTMonkeys/Pods-TTMonkeys.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +71,7 @@
 		A88B1317248799420003A4CF /* TTMonkeys */ = {
 			isa = PBXGroup;
 			children = (
+				A8B1F5062488565C00C56D21 /* DataModel */,
 				A8B1F50424884F1A00C56D21 /* GoogleService-Info.plist */,
 				A88B1318248799420003A4CF /* AppDelegate.swift */,
 				A88B131A248799420003A4CF /* SceneDelegate.swift */,
@@ -85,13 +92,46 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		A8B1F5062488565C00C56D21 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				A8B1F5092488567400C56D21 /* Models */,
+				A8B1F5082488566E00C56D21 /* Handlers */,
+				A8B1F5072488566700C56D21 /* Objects */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		A8B1F5072488566700C56D21 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A8B1F50A2488568700C56D21 /* User.swift */,
+				A8B1F50C2488574000C56D21 /* DataTypes.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		A8B1F5082488566E00C56D21 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		A8B1F5092488567400C56D21 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A8B1F50E24885BA900C56D21 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DA64A0F52FA509DD6B074510 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				351B63C65980E7A0059EDA27 /* Pods-TTMonkeys.debug.xcconfig */,
 				BA3B7D3AB4F4ABA14B9C663E /* Pods-TTMonkeys.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -219,8 +259,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8B1F50B2488568700C56D21 /* User.swift in Sources */,
 				A88B1319248799420003A4CF /* AppDelegate.swift in Sources */,
+				A8B1F50D2488574000C56D21 /* DataTypes.swift in Sources */,
 				A88B131B248799420003A4CF /* SceneDelegate.swift in Sources */,
+				A8B1F50F24885BA900C56D21 /* UserModel.swift in Sources */,
 				A88B131D248799420003A4CF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
