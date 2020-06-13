@@ -21,6 +21,9 @@ class UserModel {
     
     private var userHandlers = [UserHandler]()
     private var protectedUserHandlers = [ProtectedUserHandler]()
+    
+    private var mUser: User?
+    private var mProtectedUser: ProtectedUser?
         
     
     public func getUserId() -> String? {
@@ -75,8 +78,29 @@ class UserModel {
         }
     }
     
-    public func addUserHandler() {
-        
+    public func addUserHandler(handler: UserHandler) {
+        if let userId = self.getUserId() {
+            if userHandlers.count > 0 {
+                self.userHandlers.append(handler)
+                handler.callback(mUser, nil)
+            }
+            else {
+                self.userHandlers = [handler]
+                let firebaseListener = userRef.document(userId).addSnapshotListener() {(DocumentSnapshot, error) in
+                    if let error = error {
+                        self.handleUserSnapshot(user: nil, error: error)
+                    }
+                }
+                self.userFirebaseListener = firebaseListener
+                
+            }
+        }
+    }
+    
+    private func handleUserSnapshot(user: User?, error: Error?) {
+        for handler in self.userHandlers {
+            handler.callback(user, error)
+        }
     }
     
     public func removeUserHandler() {
