@@ -13,11 +13,11 @@ struct ProtectedUser {
     var inviteCode: String
     var notificationTokens: [String]?
     var campaignIds: [String]?
+    var email: String
 }
 
 struct User {
-    let profileId: String
-    var email: String
+    let userId: String
     var firstName: String
     var lastName: String
 }

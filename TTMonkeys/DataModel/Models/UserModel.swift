@@ -34,13 +34,31 @@ class UserModel {
         
     }
     
-    public func doSignUp(user: User, protectedUser: ProtectedUser, password: String, completion: @escaping(Error?) -> Void) {
-        Auth.auth().createUser(withEmail: user.email, password: password) { authResult, error in
+    public func doSignUp(email: String, firstName: String, lastName: String, password: String, completion: @escaping(Error?) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { _, error in
             if let error = error {
                 completion(error)
             }
             
-            else if let auth = authResult {
+            else if let userId = Auth.auth().currentUser?.uid {
+                var dataSetCount = 0
+                let inviteCode = String(UUID().uuidString.prefix(8))
+                let user = User(userId: userId, firstName: firstName, lastName: lastName)
+                let protectedUser = ProtectedUser(userId: userId, inviteCode: inviteCode, notificationTokens: nil, campaignIds: nil, email: email)
+                
+                self.setUserData(user: user, completion: { userError in
+                    dataSetCount += 1
+                    if dataSetCount == 2 {
+                        completion(userError)
+                    }
+                })
+                
+                self.setProtectedUserData(protectedUser: protectedUser, completion: { protectedUserError in
+                    dataSetCount += 1
+                    if dataSetCount == 2 {
+                        completion(protectedUserError)
+                    }
+                })
                 
             }
         }
@@ -65,8 +83,19 @@ class UserModel {
         
     }
     
-    public func setUserData() {
+    public func setUserData(user: User, completion: @escaping(Error?) -> Void) {
+        userRef.document(user.userId).setData(map(user: user), merge: true) { err in
+            completion(err)
+        }
+    }
+    
+    private func map(user: User) -> [String: Any] {
+        var map = [String: Any]()
+        map["firstName"] = user.firstName
+        map["lastName"] = user.lastName
         
+        return map
+
     }
     
     // MARK: Private Section
@@ -88,7 +117,19 @@ class UserModel {
         
     }
     
-    public func setProtectedUserData() {
+    public func setProtectedUserData(protectedUser: ProtectedUser, completion: @escaping(Error?) -> Void) {
+        getProtectedUserRef()?.document("userProtected").setData(map(protectedUser: protectedUser), merge: true) { err in
+            completion(err)
+        }
+    }
+    
+    private func map(protectedUser: ProtectedUser) -> [String: Any] {
+        var map = [String: Any]()
+        map["email"] = protectedUser.email
+        map["campaignIds"] = protectedUser.campaignIds
+        map["inviteCode"] = protectedUser.inviteCode
+        map["notificationTokens"] = protectedUser.notificationTokens
         
+        return map
     }
 }
