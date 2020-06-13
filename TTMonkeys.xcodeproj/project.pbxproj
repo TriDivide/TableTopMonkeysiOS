@@ -26,6 +26,7 @@
 		A8B1F50F24885BA900C56D21 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1F50E24885BA900C56D21 /* UserModel.swift */; };
 		A8D523DD2494E7D70069E109 /* UserHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D523DC2494E7D70069E109 /* UserHandler.swift */; };
 		A8D523DF2494E7F10069E109 /* ProtectedUserHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D523DE2494E7F10069E109 /* ProtectedUserHandler.swift */; };
+		A8D523E12494ECD00069E109 /* ModelErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D523E02494ECD00069E109 /* ModelErrors.swift */; };
 		DC20E8DEE3A12F3DB70F74F4 /* Pods_TTMonkeys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A835144763F16A19605DBEF2 /* Pods_TTMonkeys.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		A8B1F50E24885BA900C56D21 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		A8D523DC2494E7D70069E109 /* UserHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHandler.swift; sourceTree = "<group>"; };
 		A8D523DE2494E7F10069E109 /* ProtectedUserHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedUserHandler.swift; sourceTree = "<group>"; };
+		A8D523E02494ECD00069E109 /* ModelErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelErrors.swift; sourceTree = "<group>"; };
 		BA3B7D3AB4F4ABA14B9C663E /* Pods-TTMonkeys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTMonkeys.release.xcconfig"; path = "Target Support Files/Pods-TTMonkeys/Pods-TTMonkeys.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 				A8B1F5092488567400C56D21 /* Models */,
 				A8B1F5082488566E00C56D21 /* Handlers */,
 				A8B1F5072488566700C56D21 /* Objects */,
+				A8D523E02494ECD00069E109 /* ModelErrors.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				A81D3286248D7775005E7760 /* Lore.swift in Sources */,
 				A81D3280248D6FD2005E7760 /* Member.swift in Sources */,
 				A8D523DF2494E7F10069E109 /* ProtectedUserHandler.swift in Sources */,
+				A8D523E12494ECD00069E109 /* ModelErrors.swift in Sources */,
 				A8D523DD2494E7D70069E109 /* UserHandler.swift in Sources */,
 				A81D3282248D70C6005E7760 /* Invite.swift in Sources */,
 				A81D328C248D7AA1005E7760 /* Campaign.swift in Sources */,

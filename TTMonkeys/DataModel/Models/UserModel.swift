@@ -19,23 +19,42 @@ class UserModel {
     private var userFirebaseListener: ListenerRegistration?
     private var protectedUserFirebaseListener: ListenerRegistration?
     
-    // private var userHandlers = [UserHandler]()
-    // private var protectedUserHandlers = [ProtectedUserHandler]()
+    private var userHandlers = [UserHandler]()
+    private var protectedUserHandlers = [ProtectedUserHandler]()
+        
     
     public func getUserId() -> String? {
         return Auth.auth().currentUser?.uid
     }
     
-    public func doLogin() {
+    public func doLogin(email: String, password: String, completion: @escaping(Error?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { _, error in
+                completion(error)
+        }
         
     }
     
-    public func doSignUp() {
-        
+    public func doSignUp(user: User, protectedUser: ProtectedUser, password: String, completion: @escaping(Error?) -> Void) {
+        Auth.auth().createUser(withEmail: user.email, password: password) { authResult, error in
+            if let error = error {
+                completion(error)
+            }
+            
+            else if let auth = authResult {
+                
+            }
+        }
     }
     
-    public func doLogout() {
-        
+    
+    public func doLogout(completion: @escaping(Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+            completion(signOutError)
+        }
     }
     
     public func addUserHandler() {
