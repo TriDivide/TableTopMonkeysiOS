@@ -10,8 +10,45 @@ import SwiftUI
 
 
 struct LoginView: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
+    @State private var result: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TextField("Email", text: $email)
+            SecureField("Password", text: $password)
+            
+            Button(action: {
+                self.doLogin()
+            }) {
+                Text("Login")
+            }
+            
+            Text(result)
+        }
+    }
+    
+// MARK: Logic
+    private func doLogin() {
+        if email.isValidEmail() {
+            guard password.count >= 6 else {
+                result = RegistrationError.invalidPassword.localizedDescription
+                return
+            }
+            
+            UserModel.instance.doLogin(email: email, password: password) { error in
+                if let error = error {
+                    self.result = error.localizedDescription
+                    return
+                }
+                self.result = "Successfully logged in."
+            }
+        }
+        else {
+            result = RegistrationError.invalidEmail.localizedDescription
+        }
     }
 }
 

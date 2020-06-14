@@ -31,6 +31,7 @@
 		A8E0630E2496346A00A87584 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E0630D2496346A00A87584 /* LoginView.swift */; };
 		A8E063102496347700A87584 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E0630F2496347700A87584 /* SignupView.swift */; };
 		A8E06312249634CB00A87584 /* CampaignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E06311249634CB00A87584 /* CampaignsView.swift */; };
+		A8E063142496394600A87584 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E063132496394600A87584 /* extensions.swift */; };
 		DC20E8DEE3A12F3DB70F74F4 /* Pods_TTMonkeys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A835144763F16A19605DBEF2 /* Pods_TTMonkeys.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		A8E0630D2496346A00A87584 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A8E0630F2496347700A87584 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A8E06311249634CB00A87584 /* CampaignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignsView.swift; sourceTree = "<group>"; };
+		A8E063132496394600A87584 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		BA3B7D3AB4F4ABA14B9C663E /* Pods-TTMonkeys.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTMonkeys.release.xcconfig"; path = "Target Support Files/Pods-TTMonkeys/Pods-TTMonkeys.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				A88B1323248799440003A4CF /* LaunchScreen.storyboard */,
 				A88B1326248799440003A4CF /* Info.plist */,
 				A88B1320248799440003A4CF /* Preview Content */,
+				A8E063132496394600A87584 /* extensions.swift */,
 			);
 			path = TTMonkeys;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				A8E06312249634CB00A87584 /* CampaignsView.swift in Sources */,
 				A8D523DD2494E7D70069E109 /* UserHandler.swift in Sources */,
 				A81D3282248D70C6005E7760 /* Invite.swift in Sources */,
+				A8E063142496394600A87584 /* extensions.swift in Sources */,
 				A81D328C248D7AA1005E7760 /* Campaign.swift in Sources */,
 				A88B131D248799420003A4CF /* ContentView.swift in Sources */,
 				A81D3284248D718F005E7760 /* Mechanic.swift in Sources */,
