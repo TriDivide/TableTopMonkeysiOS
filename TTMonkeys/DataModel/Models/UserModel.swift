@@ -45,7 +45,14 @@ class UserModel {
     
     public func doLogin(email: String, password: String, completion: @escaping(Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
+            if let error = error {
+                self.authStatus = false
                 completion(error)
+                return
+            }
+        
+            self.authStatus = true
+            completion(nil)
         }
         
     }
@@ -53,10 +60,13 @@ class UserModel {
     public func doSignUp(email: String, firstName: String, lastName: String, password: String, completion: @escaping(Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { _, error in
             if let error = error {
+                self.authStatus = false
                 completion(error)
+                
             }
             
             else if let userId = Auth.auth().currentUser?.uid {
+                self.authStatus = true
                 var dataSetCount = 0
                 let inviteCode = String(UUID().uuidString.prefix(8))
                 let user = User(userId: userId, firstName: firstName, lastName: lastName)
@@ -83,6 +93,7 @@ class UserModel {
     public func doLogout(completion: @escaping(Error?) -> Void) {
         do {
             try Auth.auth().signOut()
+            self.authStatus = false
             completion(nil)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
