@@ -14,8 +14,8 @@ struct CampaignsView: View {
     }
 }
 
-struct CampaignsPage_Previews: PreviewProvider {
+struct CampaignsView_Previews: PreviewProvider {
     static var previews: some View {
-        CampaignsPage()
+        CampaignsView()
     }
 }
