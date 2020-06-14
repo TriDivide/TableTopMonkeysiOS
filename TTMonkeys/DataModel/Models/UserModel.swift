@@ -6,9 +6,10 @@
 //  Copyright © 2020 TriDivide. All rights reserved.
 //
 
-import Foundation
+import Combine
 import FirebaseAuth
 import FirebaseFirestore
+
 
 class UserModel {
     
@@ -25,6 +26,18 @@ class UserModel {
     private var mUser: User?
     private var mProtectedUser: ProtectedUser?
         
+    public let loginStatus = PassthroughSubject<Bool, Never>()
+    
+    private var authStatus: Bool {
+        get { return isLoggedIn() }
+        set { self.loginStatus.send(newValue)}
+    }
+    
+    public func isLoggedIn() -> Bool {
+        let isLoggedIn = Auth.auth().currentUser != nil
+        self.authStatus = isLoggedIn
+        return isLoggedIn
+    }
     
     public func getUserId() -> String? {
         return Auth.auth().currentUser?.uid
