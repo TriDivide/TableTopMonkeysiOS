@@ -67,7 +67,6 @@ class UserModel {
         }
     }
     
-    
     public func doLogout(completion: @escaping(Error?) -> Void) {
         do {
             try Auth.auth().signOut()
@@ -86,9 +85,22 @@ class UserModel {
             }
             else {
                 self.userHandlers = [handler]
-                let firebaseListener = userRef.document(userId).addSnapshotListener() {(DocumentSnapshot, error) in
+                let firebaseListener = userRef.document(userId).addSnapshotListener() {(documentSnapshot, error) in
                     if let error = error {
                         self.handleUserSnapshot(user: nil, error: error)
+                    }
+                    else if let snapshot = documentSnapshot {
+                        if snapshot.exists {
+                            let id = snapshot.documentID
+                            if let data = snapshot.data(), let firstName = data["firstName"] as? String, let lastName = data["lastName"] as? String {
+                                self.mUser = User(userId: id, firstName: firstName, lastName: lastName)
+                            }
+                        }
+                        else {
+                            self.mUser = nil
+                        }
+                        
+                        self.handleUserSnapshot(user: self.mUser, error: nil)
                     }
                 }
                 self.userFirebaseListener = firebaseListener
@@ -103,8 +115,18 @@ class UserModel {
         }
     }
     
-    public func removeUserHandler() {
+    public func remove(userHandler: UserHandler) {
+        for (index, handler) in self.userHandlers.enumerated() {
+            if handler.uuid == userHandler.uuid {
+                self.userHandlers.remove(at: index)
+            }
+        }
         
+        if self.userHandlers.count == 0 {
+            if let listener = self.userFirebaseListener {
+                listener.remove()
+            }
+        }
     }
     
     public func setUserData(user: User, completion: @escaping(Error?) -> Void) {
@@ -122,6 +144,11 @@ class UserModel {
 
     }
     
+    public func forgotPassword(email: String, completion: @escaping(Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+          completion(error)
+        }
+    }
     // MARK: Private Section
     
     private func getProtectedUserRef() -> CollectionReference? {
@@ -133,12 +160,55 @@ class UserModel {
         }
     }
     
-    public func addProtectedUserHandler() {
-        
+    public func addProtectedUserHandler(handler: ProtectedUserHandler) {
+        if protectedUserHandlers.count > 0 {
+            self.protectedUserHandlers.append(handler)
+            handler.callback(mProtectedUser, nil)
+        }
+        else {
+            self.protectedUserHandlers = [handler]
+            if let ref = getProtectedUserRef() {
+                let firebaseListener = ref.document("userProtected").addSnapshotListener() {(documentSnapshot, error) in
+                    if let error = error {
+                        self.handleUserSnapshot(user: nil, error: error)
+                    }
+                    else if let snapshot = documentSnapshot {
+                        if snapshot.exists {
+                            let id = snapshot.documentID
+                            if let data = snapshot.data(), let inviteCode = data["inviteCode"] as? String, let email = data["email"] as? String {
+                                self.mProtectedUser = ProtectedUser(userId: id, inviteCode: inviteCode, notificationTokens: data["notificationTokens"] as? [String], campaignIds: data["campaignIds"] as? [String], email: email)
+                            }
+                        }
+                        else {
+                            self.mProtectedUser = nil
+                        }
+                        
+                        self.handleProtectedUserSnapshot(protectedUser: self.mProtectedUser, error: nil)
+                    }
+                }
+                self.protectedUserFirebaseListener = firebaseListener
+            }
+        }
     }
     
-    public func removeProtectedUserHandler() {
+    public func remove(protectedUserHandler: ProtectedUserHandler) {
+        for (index, handler) in self.protectedUserHandlers.enumerated() {
+            if handler.uuid == protectedUserHandler.uuid {
+                self.protectedUserHandlers.remove(at: index)
+            }
+        }
         
+        if self.protectedUserHandlers.count == 0 {
+            if let listener = self.protectedUserFirebaseListener {
+                listener.remove()
+            }
+        }
+    }
+    
+    private func handleProtectedUserSnapshot(protectedUser: ProtectedUser?, error: Error?) {
+        for handler in self.protectedUserHandlers {
+            handler.callback(protectedUser, error)
+        }
     }
     
     public func setProtectedUserData(protectedUser: ProtectedUser, completion: @escaping(Error?) -> Void) {
